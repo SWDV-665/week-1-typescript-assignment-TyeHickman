@@ -27,3 +27,5 @@ let l1: Grocery = {
         unitPrice: 3.5,
         isle: 'D2'
     }
+
+let myGroceryList : GroceryList = [l1,l2,l3]
