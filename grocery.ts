@@ -1,9 +1,19 @@
+"use strict"
+
 class Grocery {
     name: string;
     quantity: number;
     unitPrice: number;
     isle: string;
+
+    constructor(name = 'default', quantity = 0, unitPrice = 0, isle = '00'){
+        this.name = name;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.isle = isle;
+    }
 }
+
 
 
 
