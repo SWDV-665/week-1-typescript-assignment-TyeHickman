@@ -35,7 +35,27 @@ var l1 = {
 };
 var myGroceryList = [l1, l2, l3];
 function Grocer(grocery) {
-    return "<div id=" + grocery.id + ">\n                <h1>" + grocery.name + "</h1>\n                <hr>\n                <h3>" + grocery.isle + "</h3>\n                <p>Location: " + grocery.isle + " Price: " + (grocery.unitPrice * grocery.quantity) + "</p>\n            </div>";
+    // We want to return something like this:
+    //  `<div id=${grocery.id}>
+    //             <h1>${grocery.name}</h1>
+    //             <hr>
+    //             <h3>${grocery.isle}</h3>
+    //             <p>Location: ${grocery.isle} Price: ${(grocery.unitPrice * grocery.quantity)}</p>
+    //         </div>`
+    var idDiv = document.createElement('div');
+    idDiv.setAttribute('id', grocery.id.toString());
+    var nameH1 = document.createElement('h1');
+    nameH1.innerText = grocery.name;
+    idDiv.appendChild(nameH1);
+    var isleH3 = document.createElement('h3');
+    isleH3.innerText = "Isle: " + grocery.isle;
+    idDiv.appendChild(isleH3);
+    var deetP = document.createElement('p');
+    deetP.innerText = "Price: " + (grocery.unitPrice * grocery.quantity);
+    idDiv.appendChild(deetP);
+    var hLine = document.createElement('hr');
+    idDiv.appendChild(hLine);
+    return idDiv;
 }
 myGroceryList.forEach(function (el) {
     var listView = document.getElementById('listView');

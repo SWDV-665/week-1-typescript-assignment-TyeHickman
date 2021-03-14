@@ -43,12 +43,27 @@ let l1: Grocery = {
 let myGroceryList : GroceryList = [l1,l2,l3]
 
 function Grocer(grocery: Grocery){
-    return `<div id=${grocery.id}>
-                <h1>${grocery.name}</h1>
-                <hr>
-                <h3>${grocery.isle}</h3>
-                <p>Location: ${grocery.isle} Price: ${(grocery.unitPrice * grocery.quantity)}</p>
-            </div>`;
+    // We want to return something like this:
+    //  `<div id=${grocery.id}>
+    //             <h1>${grocery.name}</h1>
+    //             <hr>
+    //             <h3>${grocery.isle}</h3>
+    //             <p>Location: ${grocery.isle} Price: ${(grocery.unitPrice * grocery.quantity)}</p>
+    //         </div>`
+    let idDiv = document.createElement('div');
+    idDiv.setAttribute('id', grocery.id.toString());
+    let nameH1 = document.createElement('h1');
+    nameH1.innerText = grocery.name;
+    idDiv.appendChild(nameH1);
+    let isleH3 = document.createElement('h3');
+    isleH3.innerText = `Isle: ${grocery.isle}`;
+    idDiv.appendChild(isleH3);
+    let deetP = document.createElement('p')
+    deetP.innerText = `Price: ${(grocery.unitPrice * grocery.quantity)}`
+    idDiv.appendChild(deetP);
+    let hLine = document.createElement('hr');
+    idDiv.appendChild(hLine);
+    return idDiv;
 }
 
 myGroceryList.forEach(function(el){
